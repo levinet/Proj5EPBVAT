@@ -184,6 +184,9 @@ public class CommissionCalculator implements iCommissionCalculator {
 						- minimumSalesForBonusCommission;
 				
 				bonusCommission += commissionableAmount * bonusCommissionRate;
+				
+				
+				
 			} else {
 				// No commission. Simply go on.
 				netSales += s.getTransactionAmount();
