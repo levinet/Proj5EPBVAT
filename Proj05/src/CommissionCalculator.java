@@ -173,15 +173,24 @@ public class CommissionCalculator implements iCommissionCalculator {
 			// If we have already met the threshold for sales, simply add the
 			// commission in.
 			if (netSales >= minimumSalesForBonusCommission) {
-				netSales += s.getTransactionAmount();
+				
 				bonusCommission += s.getTransactionAmount()
 						* bonusCommissionRate;
 			} else if ((netSales + s.getTransactionAmount()) >= minimumSalesForBonusCommission) {
 				// We need to determine how much of this sale qualifies for
 				// commission.
+				
 				double commissionableAmount = (netSales + s
 						.getTransactionAmount())
 						- minimumSalesForBonusCommission;
+				
+				//AMP: another step that was implemented in the first "if" 
+				//should actually be implemented here.
+				//AMP: netSales += s.getTransactionAmount(); was added here due to the fact that
+				//the previous sales were not taken into account
+				
+				netSales += s.getTransactionAmount();
+				
 				
 				bonusCommission += commissionableAmount * bonusCommissionRate;
 				

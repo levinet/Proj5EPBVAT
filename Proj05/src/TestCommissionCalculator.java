@@ -133,8 +133,14 @@ public class TestCommissionCalculator {
 		//First ensure there is a standard rate right at $50000
 		assertEquals(pEmp.calculateCommission(), 960.00, 0);
 		
-		//Now ensure the bonus commission at $50,001.00
-		//pEmp.addSale(0, 2.00);
-		//assertEquals(pEmp.calculateBonusCommission(),0.01,0 );
+		//Now ensure the bonus commission at $50,002.00
+		//(This gives us a solid one cent, compared to $1.00
+		pEmp.addSale(0,2.00 );
+		assertEquals(pEmp.calculateBonusCommission(),0.01,0 );
+		
+		//Try again with a higher value
+		pEmp.addSale(0, 10000);
+		assertEquals(pEmp.calculateBonusCommission(), 50.01, 0);
+		
 	}
 }
